@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +19,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/producto',[ProductController::class, 'index'])->name('producto.index');
+Route::get('/producto/crear',[ProductController::class, 'create'])->name('producto.create');
+Route::post('/producto/crear',[ProductController::class, 'store'])->name('producto.store');
+Route::delete('/producto/{id}',[ProductController::class, 'delete'])->name('producto.delete');
+Route::get('/producto/editar/{product}',[ProductController::class, 'edit'])->name('producto.edit');
+Route::put('/producto/actualizar/{product}',[ProductController::class, 'update'])->name('producto.update');
